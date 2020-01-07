@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title class="color-accent">Programming Languages</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list" *ngIf="enable">
+      <mat-list-item *ngFor="let language of languages" role="listitem">{{language}}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions class="text-right">
+    <button mat-stroked-button color="accent" (click)="enable = !enable">{{enable ? 'Show' : 'Hide'}}</button>
+  </mat-card-actions>
+</mat-card>

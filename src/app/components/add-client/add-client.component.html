@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-8">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="color-accent">Add client</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="field-container" autocomplete="off" (ngSubmit)="addClient()">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Name" [(ngModel)]="client.name" name="name" #name="ngModel" maxlength="32" minlength="3" required>
+            <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" placeholder="Surname" [(ngModel)]="client.surname" name="surname" #surname="ngModel" maxlength="32" minlength="3" required>
+            <mat-error *ngIf="surname.invalid">{{getErrorMessage(surname)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" placeholder="Email" [(ngModel)]="client.email" name="email" #email="ngModel" maxlength="72" email required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+          </mat-form-field>
+
+          <div class="text-right">
+            <button mat-raised-button color="primary" class="px-3 mx-2" type="button" routerLink="/clients">Back</button>
+            <button mat-stroked-button color="accent" class="px-5 mx-2" type="submit">Submit</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

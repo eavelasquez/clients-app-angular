@@ -1,0 +1,40 @@
+<mat-accordion>
+  <mat-expansion-panel [expanded]="true">
+    <!-- Expansion panel header -->
+    <mat-expansion-panel-header>
+      <mat-panel-title class="color-accent font-weight-bolder">
+        Clients Data
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- Expansion panel header -->
+
+    <div class="alert alert-danger" role="alert" *ngIf="message">
+      No found results
+    </div>
+
+    <div class="row">
+      <button mat-raised-button color="accent" type="button" [routerLink]="['/add-client']">Add client</button>
+    </div>
+
+    <!-- Clients table -->
+    <table class="table table-bordered table-striped" *ngIf="clients | async">
+      <thead>
+        <tr>
+          <td scope="col" class="color-accent" *ngFor="let column of columns">{{column | uppercase}}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients | async">
+          <th scope="col">{{client.id}}</th>
+          <td>{{client.name}}</td>
+          <td>{{client.surname}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.createAt}}</td>
+          <td>{{client.img ? client.img : 'No image'}}</td>
+          <td>{{client.region?.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Clients table -->
+  </mat-expansion-panel>
+</mat-accordion>

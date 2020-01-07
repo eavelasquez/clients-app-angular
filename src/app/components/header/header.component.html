@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" role="heading">
+  <button mat-button [matMenuTriggerFor]="menu">{{title}}</button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item class="text-decoration" routerLink="/clients">Clients</a>
+    <a mat-menu-item class="text-decoration" [routerLink]="['/directive']">Directives</a>
+  </mat-menu>
+</mat-toolbar>
+
