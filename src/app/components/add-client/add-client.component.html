@@ -5,7 +5,7 @@
         <mat-card-title class="color-accent">Add client</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form class="field-container" autocomplete="off" (ngSubmit)="addClient()">
+        <form #form="ngForm" class="field-container" autocomplete="off" (ngSubmit)="addClient()">
           <mat-form-field>
             <input matInput type="text" placeholder="Name" [(ngModel)]="client.name" name="name" #name="ngModel" maxlength="32" minlength="3" required>
             <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
@@ -23,7 +23,7 @@
 
           <div class="text-right">
             <button mat-raised-button color="primary" class="px-3 mx-2" type="button" routerLink="/clients">Back</button>
-            <button mat-stroked-button color="accent" class="px-5 mx-2" type="submit">Submit</button>
+            <button mat-stroked-button color="accent" class="px-5 mx-2" type="submit" [disabled]="form.invalid">Submit</button>
           </div>
         </form>
       </mat-card-content>

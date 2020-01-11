@@ -21,14 +21,15 @@ export class ClientService {
     // return of(CLIENTS);
     // return this.http.get(this.url, { headers: this.headers }).pipe(map((clients: Client[]) => clients));
     return this.http.get(this.url, { headers: this.headers }).pipe(
-      map((clients) => clients as Client[],
-        catchError((error) => error)
-      ));
+      map((clients) => clients as Client[])
+    );
   }
 
   public saveClient(client: Client): Observable<Client> {
     return this.http.post<Client>(this.url, client, { headers: this.headers });
   }
+
+  /** --------------------------------------------------- */
 
   public updateClient(client: Client): Observable<Client> {
     return this.http.put<Client>(this.url, client, { headers: this.headers });

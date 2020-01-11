@@ -17,7 +17,7 @@
     </div>
 
     <!-- Clients table -->
-    <table class="table table-bordered table-striped" *ngIf="clients | async">
+    <table class="table table-bordered table-striped my-3" *ngIf="clients | async">
       <thead>
         <tr>
           <td scope="col" class="color-accent" *ngFor="let column of columns">{{column | uppercase}}</td>
@@ -31,7 +31,7 @@
           <td>{{client.email}}</td>
           <td>{{client.createAt}}</td>
           <td>{{client.img ? client.img : 'No image'}}</td>
-          <td>{{client.region?.name}}</td>
+          <!-- <td>{{client.region?.name}}</td> -->
         </tr>
       </tbody>
     </table>
