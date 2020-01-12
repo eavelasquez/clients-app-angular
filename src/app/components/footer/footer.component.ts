@@ -19,4 +19,4 @@ export class FooterComponent {
 
 }
 
-interface Information { title: string, year: number }
+interface Information { title: string; year: number; }

@@ -1,8 +1,24 @@
+<style>
+  .fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+</style>
 <mat-toolbar color="primary" role="heading">
-  <button mat-button [matMenuTriggerFor]="menu">{{title}}</button>
+  <button mat-button [matMenuTriggerFor]="menu">{{ title }}</button>
   <mat-menu #menu="matMenu">
     <a mat-menu-item class="text-decoration" routerLink="/clients">Clients</a>
     <a mat-menu-item class="text-decoration" [routerLink]="['/directive']">Directives</a>
   </mat-menu>
-</mat-toolbar>
 
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+
+  <mat-chip-list>
+    <mat-chip color="warn" selected>{{ secondsCounter | async }}</mat-chip>
+    <mat-chip color="accent" selected *ngIf="(secondsCounter | async) > 4">
+      {{ lastestSecond }}
+    </mat-chip>
+  </mat-chip-list>
+</mat-toolbar>

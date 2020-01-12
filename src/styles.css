@@ -1,18 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
+html, body { height: 100%;  }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* Text orientation */
-.text-center { text-align: center !important; }
-
-.text-left { text-align: left !important; }
-
-.text-right { text-align: right !important; }
-
-.text-justify { text-align: justify !important; }
-
-.text-decoration { text-decoration: none !important; }
 
 /* Text color */
 .color-white { color: #ffffff !important; }
@@ -21,3 +9,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Background color */
 .bg-primary { background-color: #3f51b5 !important; }
+
+.bg-accent { color: #ff4081 !important; }
