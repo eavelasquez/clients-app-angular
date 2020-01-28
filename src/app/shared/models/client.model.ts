@@ -3,6 +3,7 @@ export class Client {
   public name: string;
   public surname: string;
   public email: string;
-  public img: string;
+  public img?: string;
   public createAt: string;
+  public dateBirth: string;
 }

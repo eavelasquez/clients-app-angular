@@ -4,7 +4,7 @@
   </mat-list-item>
 </mat-list>
 
-<div class="row">
+<div class="row animated fast fadeIn">
   <div class="col-8">
     <mat-card>
       <mat-card-header>
@@ -25,6 +25,13 @@
           <mat-form-field>
             <input matInput type="text" placeholder="Email" [(ngModel)]="client.email" name="email" #email="ngModel" maxlength="72" email required>
             <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">{{getErrorMessage(email)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="client.dateBirth" name="dateBirth" #dateBirth required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="dateBirth.invalid && (dateBirth.dirty || dateBirth.touched)">{{getErrorMessage(dateBirth)}}</mat-error>
           </mat-form-field>
 
           <div class="text-right">

@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel [expanded]="true" class="animated fast fadeIn">
     <!-- Expansion panel header -->
     <mat-expansion-panel-header>
       <mat-panel-title class="color-accent font-weight-bolder">
@@ -29,7 +29,7 @@
           <td>{{client.name}}</td>
           <td>{{client.surname | uppercase}}</td>
           <td>{{client.email}}</td>
-          <td>{{client.createAt | date: 'EEEE dd, MMMM yyyy'}}</td>
+          <td>{{client.createAt | date: 'EEEE dd, MMMM yyyy' | titlecase}}</td>
           <td>{{client.img ? client.img : 'No image'}}</td>
           <!-- <td>{{client.region?.name}}</td> -->
           <td>
@@ -43,6 +43,7 @@
         </tr>
       </tbody>
     </table>
+    <app-pagination *ngIf="pagination" [pagination]="pagination"></app-pagination>
     <!-- Clients table -->
   </mat-expansion-panel>
 </mat-accordion>

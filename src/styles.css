@@ -11,3 +11,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .bg-primary { background-color: #3f51b5 !important; }
 
 .bg-accent { color: #ff4081 !important; }
+
+/* Animation */
+.animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}

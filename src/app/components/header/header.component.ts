@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input() title: string;
   public subscription: Subscription;
-  public lastestSecond: number;
+  public latestSecond: number;
   public secondsCounter: Observable<number>;
   public observableNumber: Observable<number>;
 
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
 
     /** Call subscribe() to start listening for updates */
-    this.subscription = this.observableNumber.subscribe((second) => this.lastestSecond = second);
+    this.subscription = this.observableNumber.subscribe((second) => this.latestSecond = second);
   }
 
   /** unsubscribe when the component is destroyed */

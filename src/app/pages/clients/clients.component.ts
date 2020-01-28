@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Client } from '../../shared/models/client.model';
 import { ClientService } from '../../shared/services/client.service';
 import Swal from 'sweetalert2';
@@ -11,20 +12,31 @@ import Swal from 'sweetalert2';
 })
 export class ClientsComponent implements OnInit {
 
+  public pagination: any;
+  public page: number = 0;
   public columns: string[];
   public message: string = null;
   public clients: Observable<Client[]>;
 
-  constructor(private clientService: ClientService) {
-  }
+  constructor(
+    private clientService: ClientService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
-  ngOnInit() {
-    /** Displayed Columns */
-    this.clients = this.clientService.getAllClients().pipe(map((clients: Client[]) => {
-      this.message = clients.length === 0 ? 'No found results' : null;
-      clients.forEach((value) => this.columns = Object.getOwnPropertyNames(value));
-      return clients;
-    }));
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      this.page = +params.get('page');
+      this.clients = this.clientService.getAllClients(this.page).pipe(
+        tap((response: any) => this.pagination = response),
+        map((response: any) => {
+          const clients: Client[] = (response.content as Client[]);
+          this.message = clients.length === 0 ? 'No found results' : null;
+          /** Displayed Columns */
+          clients.forEach((value) => this.columns = Object.getOwnPropertyNames(value));
+          return clients;
+        })
+      );
+    });
   }
 
   public deleteClient(client: Client): void {

@@ -24,28 +24,26 @@ export class ClientService {
     private router: Router
   ) { }
 
-  public getAllClients(): Observable<Client[]> {
+  public getAllClients<T>(page: number): Observable<T> {
     // return of(CLIENTS);
     /** Way 1 */
-    return this.http.get(this.url, { headers: this.headers }).pipe(
+    return this.http.get(`${this.url}/page/${page}`, { headers: this.headers }).pipe(
       tap((response: any) => {
-        console.log('Before map');
-        const clients: Client[] = response.clients as Client[];
-        clients.forEach((client, index) => console.log(index, client));
+        console.log('Before map - First tap');
+        (response.content as Client[]).forEach((client, index) => console.log(index, client));
       }),
       map((response: any) => {
-        let clients: Client[] = response.clients as Client[];
-        clients = clients.map((client) => {
+        (response.content as Client[]).map((client) => {
           client.name = client.name.toUpperCase();
           // client.createAt = formatDate(client.createAt, 'dd-MM-yyyy', 'en-US');
           // client.createAt = new DatePipe('fr').transform(client.createAt, 'dd/MM/yyyy'); /** fullDate, EEEE dd, MMMM yyyy */
           return client;
         });
-        return clients;
+        return response;
       }),
       tap((response: any) => {
-        console.log('After map');
-        response.clients.forEach((client, index) => console.log(index, client));
+        console.log('After map - Second tap');
+        (response.content as Client[]).forEach((client, index) => console.log(index, client));
       }),
     );
   }

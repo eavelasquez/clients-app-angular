@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AbstractControl } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -21,7 +21,7 @@ import { ClientService } from '../../shared/services/client.service';
     }
   `]
 })
-export class AddClientComponent implements OnInit {
+export class AddClientComponent {
 
   public errors: string[];
   public client: Client = new Client();
@@ -31,9 +31,6 @@ export class AddClientComponent implements OnInit {
     private clientService: ClientService,
     private activatedRoute: ActivatedRoute
   ) { }
-
-  ngOnInit(): void {
-  }
 
   public getErrorMessage(field: AbstractControl): string {
     return field.hasError('required') ? 'You must enter a value'

@@ -1,0 +1,29 @@
+<nav aria-label="Page navigation" *ngIf="pages?.length > 0">
+  <ul class="pagination pagination-sm justify-content-center">
+    <!-- First page -->
+    <li class="page-item" [ngClass]="{'disabled': pagination.first}">
+      <a class="page-link" [routerLink]="['/clients', 0]">&laquo;</a>
+    </li>
+
+    <!-- Previous page -->
+    <li class="page-item" [ngClass]="{'disabled': !(pagination.number > 0)}">
+      <a class="page-link" [routerLink]="['/clients', (pagination.number - 1)]">Previous</a>
+    </li>
+
+    <li class="page-item" *ngFor="let page of pages" [ngClass]="{'active': (page - 1) === pagination.number}">
+      <a class="page-link" [routerLink]="['/clients', (page - 1)]">
+        {{page}}
+      </a>
+    </li>
+
+    <!-- Next page -->
+    <li class="page-item" [ngClass]="{'disabled': !(pagination.number < (pagination.totalPages - 1))}">
+      <a class="page-link" [routerLink]="['/clients', (pagination.number + 1)]">Next</a>
+    </li>
+
+    <!-- Last page -->
+    <li class="page-item" [ngClass]="{'disabled': pagination.last}">
+      <a class="page-link" [routerLink]="['/clients', (pages[pages.length - 1] - 1)]">&raquo;</a>
+    </li>
+  </ul>
+</nav>

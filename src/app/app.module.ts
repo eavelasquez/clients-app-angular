@@ -25,6 +25,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 /** Components */
 import { HeaderComponent } from './components/header/header.component';
@@ -33,12 +34,14 @@ import { DirectiveComponent } from './pages/directive/directive.component';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddClientComponent } from './components/add-client/add-client.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 registerLocaleData(localeFr, 'fr'); /** Global configuration */
 
 const appRoutes: Routes = [
-  { path: 'clients', component: ClientsComponent },
   { path: 'directive', component: DirectiveComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'clients/:page', component: ClientsComponent },
   { path: 'add-client', component: AddClientComponent },
   { path: 'add-client/:id', component: AddClientComponent },
   { path: '', redirectTo: 'clients', pathMatch: 'full' },
@@ -53,7 +56,8 @@ const appRoutes: Routes = [
     DirectiveComponent,
     ClientsComponent,
     PageNotFoundComponent,
-    AddClientComponent
+    AddClientComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
